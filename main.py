@@ -1,19 +1,33 @@
 from fastapi import FastAPI 
+from datetime import datetime 
+from pydantic import BaseModel 
+import uuid 
 
 app = FastAPI()
 
+class Task(BaseModel):
+    title : str
+    description : str
+    status : str
+    priority : str 
 
 
-tasks = []
+tasks = {}
+# changed from list to dictionary for better id lookup 
 
-@app.post('/')
-def create_task(id, title, description, status, priority, created_at):
-    tasks.append({
-        "id" : str(id),
-        "title" : title,
-        "description" : description,
-        "status" : status,
-        "priority" : priority,
-        "created_at" : created_at 
-    })
+@app.post('/tasks')
+def create_task(task : Task):
+    task_id = str(uuid.uuid4())
+
+    new_task = {
+        "id" : task_id,
+        "title" : task.title,
+        "description" : task.description,
+        "status" : task.status,
+        "priority" : task.priority,
+        "created_at" : datetime.utcnow().isoformat()
+    }
+
+    tasks[task_id] = new_task 
+    return new_task
     
