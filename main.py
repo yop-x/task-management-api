@@ -4,15 +4,29 @@ from pydantic import BaseModel
 import uuid 
 from fastapi import HTTPException
 from typing import Optional 
+from enum import Enum 
 
 
 app = FastAPI()
 
+# create TaskStatus, TaskPriority class to limit the input options
+class TaskStatus(str, Enum):
+    todo = "todo"
+    in_progress = "in_progress"
+    done = "done"
+
+
+class TaskPriority(str, Enum):
+    low = "low"
+    medium = "medium"
+    high = "high"
+
+
 class TaskCreate(BaseModel):
     title : str
     description : str
-    status : str
-    priority : str 
+    status : TaskStatus
+    priority : TaskPriority
 
 
 tasks = {}
@@ -63,9 +77,9 @@ def delete_task(task_id: str):
 class TaskUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
-    status: Optional[str] = None
-    priority: Optional[str] = None 
-
+    status: Optional[TaskStatus] = None
+    priority: Optional[TaskPriority] = None 
+ 
 
 @app.patch('/tasks/{task_id}')
 def update_task_by_id(task_id: str, updates: TaskUpdate):
