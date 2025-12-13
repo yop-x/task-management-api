@@ -31,9 +31,13 @@ def create_task(task : Task):
     tasks[task_id] = new_task 
     return new_task
 
-@app.get('/tasks/:id')
+@app.get('/tasks/{task_id}')
 def get_task_by_id(task_id):
-    return tasks[task_id]
+    if str(task_id) in tasks:
+        return tasks[task_id]
+
+    else:
+        raise HTTPExcedption(status_code = 404, detail='Task not found.')
 
 
     
