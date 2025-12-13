@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from datetime import datetime 
 from pydantic import BaseModel 
 import uuid 
+from fastapi import HTTPException
 
 app = FastAPI()
 
@@ -32,16 +33,24 @@ def create_task(task : Task):
     return new_task
 
 @app.get('/tasks/{task_id}')
-def get_task_by_id(task_id):
-    if str(task_id) in tasks:
+def get_task_by_id(task_id: str):
+    if task_id in tasks:
         return tasks[task_id]
 
     else:
-        raise HTTPExcedption(status_code = 404, detail='Task not found.')
+        raise HTTPException(status_code = 404, detail='Task not found.')
 
 
 @app.get('/tasks')
 def get_tasks():
-    return list(tasks.values)
+        return list(tasks.values)
 
-    
+
+@app.delete('/tasks/{task_id}')
+def delete_task(task_id : str):
+    if task_id in tasks:
+        del tasks[task_id]
+        return 
+
+    else:
+        raise HTTPException(status_code = 404, detail='Task not found')
