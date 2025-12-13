@@ -45,7 +45,7 @@ def get_task_by_id(task_id: str):
 
 @app.get('/tasks')
 def get_tasks():
-        return list(tasks.values)
+        return list(tasks.values())
 
 
 @app.delete('/tasks/{task_id}')
@@ -55,7 +55,7 @@ def delete_task(task_id: str):
         return 
 
     else:
-        raise HTTPException(status_code = 404, detail='Task not found
+        raise HTTPException(status_code = 404, detail='Task not found') 
 
 
 
@@ -91,4 +91,3 @@ def update_task_by_id(task_id: str, updates: TaskUpdate):
 
 
     return task
-
