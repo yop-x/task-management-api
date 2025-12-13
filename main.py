@@ -30,4 +30,10 @@ def create_task(task : Task):
 
     tasks[task_id] = new_task 
     return new_task
+
+@app.get('/tasks/:id')
+def get_task_by_id(task_id):
+    return tasks[task_id]
+
+
     
