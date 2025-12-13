@@ -40,4 +40,8 @@ def get_task_by_id(task_id):
         raise HTTPExcedption(status_code = 404, detail='Task not found.')
 
 
+@app.get('/tasks')
+def get_tasks():
+    return list(tasks.values)
+
     
