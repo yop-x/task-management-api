@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <h1>Task Manager</h1>
+
+  <h2>Create Task</h2>
+  <form id="task-form">
+    <input placeholder="Title" id="title" required />
+    <input placeholder="Description" id="description" required />
+
+    <select id="status">
+      <option value="todo">Todo</option>
+      <option value="in_progress">In Progress</option>
+      <option value="done">Done</option>
+    </select>
+
+    <select id="priority">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+
+    <button type="submit">Add Task</button>
+  </form>
+
+  <h2>Tasks</h2>
+  <ul id="task-list"></ul>
+
+
+  <script src="./scipt.js"></script>
+</body>
+</html>

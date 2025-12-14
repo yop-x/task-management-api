@@ -7,7 +7,19 @@ from typing import Optional
 from enum import Enum 
 
 
+# to avoid the browser to block cross origin 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # allow all origins (OK for dev)
+    allow_credentials=True,
+    allow_methods=["*"],  # allow GET, POST, PATCH, DELETE
+    allow_headers=["*"],
+)
+
 
 # create TaskStatus, TaskPriority class to limit the input options
 class TaskStatus(str, Enum):
