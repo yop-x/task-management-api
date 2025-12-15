@@ -1,4 +1,4 @@
-const API_URL = "https://task-management-api-dutb.onrender.com/";
+const API_URL = "https://task-management-api-dutb.onrender.com";
 
 const taskList = document.getElementById("task-list");
 const form = document.getElementById("task-form");
