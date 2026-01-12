@@ -13,7 +13,7 @@ This project is a task management application consisting of:
 ---
 ### Demo 
 - Frontend (Firebase Hosting on my personal website):<br>
-https://yopxue.com/project-api-frontend/index.html
+https://yopxue.com/projects/project-api-frontend/index.html
 
 - Backend API (Render): <br>
 https://task-management-api-dutb.onrender.com
