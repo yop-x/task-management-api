@@ -66,7 +66,7 @@ DELETE /tasks/{task_id}
 - In-memory storage was used instead of a database, mainly for the simplicity of the assignment. 
 - Task_id will be generated randomly followed by the format of UUIDs for uniqueness. 
 - **ENUMS** was used to validate useful input for task priority and status. 
-- Firstly, I made the main.py and the frontend files on github, then decided to deploy the frontend on my personal website [yopxue.com/projects](https://yopxue.com/projects.html) and the backend onto [Render](https://task-management-api-dutb.onrender.com).
+- Firstly, I made the main.py and the frontend files on github, then decided to deploy the frontend on my personal website [yopxue.com/projects](https://yopxue.com/projects/index.html) and the backend onto [Render](https://task-management-api-dutb.onrender.com).
 
 ---
 ### Limitation and Future Work 
